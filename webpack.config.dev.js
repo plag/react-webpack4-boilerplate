@@ -2,6 +2,8 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const fileLoaderExclude = [/\.js$/, /\.html$/, /\.json$/, /\.s(a|c)ss$/, /\.css$/, /\.svg$/];
+
 module.exports = {
   mode: 'development',
   entry: [
@@ -66,6 +68,31 @@ module.exports = {
           'style-loader',
           'css-loader?modules',
         ],
+      },
+      {
+        test: /\.s(c|a)ss$/,
+        use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "postcss-loader",
+          "sass-loader", // compiles Sass to CSS
+        ]
+      },
+      {
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        use: [
+          'svg-sprite-loader',
+        ],
+      },
+      {
+        exclude: fileLoaderExclude,
+        loader: require.resolve('file-loader'),
+        options: {
+          name: '[name].[hash:8].[ext]',
+          // outputPath: 'src/static/',
+          // publicPath: 'static/',
+        },
       },
     ],
   },
