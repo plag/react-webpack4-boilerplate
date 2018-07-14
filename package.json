@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "server": "node server.js",
-    "dev": "webpack-dev-server --progress --config webpack.config.dev.js"
+    "dev": "webpack-dev-server --progress --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "start": "http-server ./dist -p 3000"
   },
   "license": "MIT",
   "devDependencies": {
@@ -19,8 +21,10 @@
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.11.1",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
     "postcss-easy-import": "^3.0.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.6",
@@ -29,6 +33,7 @@
     "style-loader": "^0.21.0",
     "svg-sprite-loader": "^3.8.0",
     "webpack": "^4.16.0",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
   },
