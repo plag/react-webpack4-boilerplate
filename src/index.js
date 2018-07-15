@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Layout from './components/Layout';
+import App from './components/App';
 
 import reducers from './redux/reducers';
 
@@ -30,7 +30,7 @@ const render = (Component) => {
   );
 };
 
-render(Layout);
+render(App);
 
 if (module.hot) {
   module.hot.accept('./redux/reducers', () => {
